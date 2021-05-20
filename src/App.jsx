@@ -1,15 +1,19 @@
 // import axios from 'axios'
-// import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import Loading from './components/Loading/Loading'
 
 function App() {
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        const loader = setTimeout(() => setIsLoading(false), 2000)
+        return () => clearTimeout(loader)
+        // axios.get('http://localhost:3006').then(res => console.log(res.data))
+    }, [])
     
-    // useEffect(() => {
-    //     axios.get('http://localhost:3006').then(res => console.log(res.data))
-    // }, [])
-    
-    return (
-        <div>{resData[0].name}</div>
-    )
+    return isLoading ?
+        <Loading/>
+        :
+        <div>Hello</div>
 }
 
 export default App;
