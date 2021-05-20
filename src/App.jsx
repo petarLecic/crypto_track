@@ -1,19 +1,25 @@
 // import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Loading from './components/Loading/Loading'
+import Table from './components/Table/Table';
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
+    const [currencies, setCurrencies] = useState([])
     useEffect(() => {
         const loader = setTimeout(() => setIsLoading(false), 2000)
-        return () => clearTimeout(loader)
+        
         // axios.get('http://localhost:3006').then(res => console.log(res.data))
+        const sortedCurrencies = resData.sort((a, b) => b.quote.USD.price - a.quote.USD.price)
+        setCurrencies(sortedCurrencies.slice(0, 50))
+
+        return () => clearTimeout(loader)
     }, [])
     
     return isLoading ?
         <Loading/>
         :
-        <div>Hello</div>
+        <Table currencies={currencies}/>
 }
 
 export default App;
