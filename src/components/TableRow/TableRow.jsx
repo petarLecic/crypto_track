@@ -1,5 +1,5 @@
 import Amount from "../Amount/Amount"
-
+import { Link } from 'react-router-dom'
 
 const TableRow = ({ isHeader, name, symbol, price, percent }) => {
     return isHeader ?
@@ -13,7 +13,9 @@ const TableRow = ({ isHeader, name, symbol, price, percent }) => {
         </tr>
         :
         <tr>
-            <td>{name}</td>
+            <td>
+                <Link to={`/currency/${symbol}`}>{name}</Link>
+            </td>
             <td>{symbol}</td>
             <td>$ {price.toFixed(2)}</td>
             <td>{percent.toFixed(2)} %</td>

@@ -1,6 +1,12 @@
 // import axios from 'axios'
 import { useState, useEffect } from 'react'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom"
 import Loading from './components/Loading/Loading'
+import Single from './components/Single/Single';
 import Table from './components/Table/Table';
 
 function App() {
@@ -32,7 +38,16 @@ function App() {
     return isLoading ?
         <Loading/>
         :
-        <Table currencies={currencies}/>
+        <Router>
+            <Switch>
+                <Route exact path="/">
+                    <Table currencies={currencies}/>
+                </Route>
+                <Route path="/currency/:symbol">
+                    <Single/>
+                </Route>
+            </Switch>
+        </Router>
 }
 
 export default App;
