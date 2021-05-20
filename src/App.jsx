@@ -6,15 +6,28 @@ import Table from './components/Table/Table';
 function App() {
     const [isLoading, setIsLoading] = useState(true);
     const [currencies, setCurrencies] = useState([])
+
     useEffect(() => {
+        // getCurrencies()
+        // const apiInterval = setInterval(() => getCurrencies(), 60000)
+
+        // return () => clearInterval(apiInterval)
+
         const loader = setTimeout(() => setIsLoading(false), 2000)
-        
-        // axios.get('http://localhost:3006').then(res => console.log(res.data))
         const sortedCurrencies = resData.sort((a, b) => b.quote.USD.price - a.quote.USD.price)
         setCurrencies(sortedCurrencies.slice(0, 50))
 
         return () => clearTimeout(loader)
     }, [])
+
+    // function getCurrencies() {
+    //     axios.get('http://localhost:3006').then(res => {
+    //         const sortedCurrencies = res.data.sort((a, b) => b.quote.USD.price - a.quote.USD.price)
+    //         setCurrencies(sortedCurrencies.slice(0, 50))
+    //         setIsLoading(false)
+    //         console.log('api refreshed')
+    //     })
+    // }
     
     return isLoading ?
         <Loading/>
