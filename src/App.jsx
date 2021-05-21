@@ -10,7 +10,6 @@ import Single from './components/Single/Single';
 import Table from './components/Table/Table';
 
 function App() {
-    const [isLoading, setIsLoading] = useState(true);
     const [currencies, setCurrencies] = useState([])
 
     useEffect(() => {
@@ -19,9 +18,10 @@ function App() {
 
         // return () => clearInterval(apiInterval)
 
-        const loader = setTimeout(() => setIsLoading(false), 2000)
-        const sortedCurrencies = resData.sort((a, b) => b.quote.USD.price - a.quote.USD.price)
-        setCurrencies(sortedCurrencies.slice(0, 50))
+        const loader = setTimeout(() => {
+            const sortedCurrencies = resData.sort((a, b) => b.quote.USD.price - a.quote.USD.price)
+            setCurrencies(sortedCurrencies.slice(0, 50))
+        }, 2000)
 
         return () => clearTimeout(loader)
     }, [])
@@ -30,14 +30,11 @@ function App() {
     //     axios.get('http://localhost:3006').then(res => {
     //         const sortedCurrencies = res.data.sort((a, b) => b.quote.USD.price - a.quote.USD.price)
     //         setCurrencies(sortedCurrencies.slice(0, 50))
-    //         setIsLoading(false)
     //         console.log('api refreshed')
     //     })
     // }
     
-    return isLoading ?
-        <Loading/>
-        :
+    return currencies.length > 0 ?
         <Router>
             <Switch>
                 <Route exact path="/">
@@ -48,6 +45,8 @@ function App() {
                 </Route>
             </Switch>
         </Router>
+        :
+        <Loading/>
 }
 
 export default App;
