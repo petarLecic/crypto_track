@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
+import Loading from "../Loading/Loading"
 
 const Single = () => {
     let symbol = useParams()
@@ -12,7 +13,7 @@ const Single = () => {
                 setCurrency(res.data[symbol.symbol])
                 console.log(res.data[symbol.symbol])
             })
-    }, [])
+    }, [symbol])
 
     return currency ?
         <div>
@@ -21,7 +22,7 @@ const Single = () => {
             <p>{currency.description}</p>
         </div>
         :
-        null
+        <Loading/>
 }
 
 export default Single
