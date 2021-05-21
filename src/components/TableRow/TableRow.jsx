@@ -1,7 +1,7 @@
 import Amount from "../Amount/Amount"
 import { Link } from 'react-router-dom'
 import { StyledTableRow } from './StyledTableRow'
-import styled from "styled-components"
+import { StyledPercent } from './StyledPercent'
 
 const TableRow = ({ isHeader, name, symbol, price, percent }) => {
     return isHeader ?
@@ -24,15 +24,5 @@ const TableRow = ({ isHeader, name, symbol, price, percent }) => {
             <Amount name={name} price={price}/>
         </StyledTableRow>
 }
-
-const StyledPercent = styled.td`
-    color: ${props => {
-        if (props.percent < 0) return 'rgb(240, 0, 0)'
-        if (props.percent > 0) return 'rgb(3, 185, 42)'
-        else return
-    }};
-    text-shadow: 1px 0.5px black;
-    /* font-weight: bold; */
-`
 
 export default TableRow

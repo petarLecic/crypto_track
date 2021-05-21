@@ -3,8 +3,8 @@ import { StyledForm } from './StyledForm'
 
 
 const Amount = ({ name, price }) => {
-    const [amount, setAmount] = useState(localStorage.getItem(name) ? localStorage.getItem(name) : 0)
-    const [inputValue, setInputValue] = useState(+localStorage.getItem(name) ? localStorage.getItem(name) : '')
+    const [amount, setAmount] = useState(localStorage.getItem(name) || 0)
+    const [inputValue, setInputValue] = useState(Number(localStorage.getItem(name)) || '')
 
     const regex = /^[+]?([0-9]+(?:[.][0-9]*)?|\.[0-9]+)(?:[eE][+-]?[0-9]+)?$/
 

@@ -1,4 +1,3 @@
-// import axios from 'axios'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Single from './components/Single/Single';
 import Table from './components/Table/Table';
