@@ -19,8 +19,16 @@ export const StyledTableRow = styled.tr`
             return {
                 backgroundColor: 'rgba(80, 80, 80, 0.8)',
                 color: 'rgb(255, 255, 255)',
-                fontWeight: 'bold'
+                fontWeight: 'bold',
             }
         }
     }}
+    @media (max-width: 550px) {
+        td {
+            font-size: 12px;
+        }
+        a {
+            margin-left: unset;
+        }
+    }
 `

@@ -6,10 +6,10 @@ export const StyledSingle = styled.div`
     margin: 20px auto;
     padding: 30px;
     text-align: justify;
-    width: 60%;
+    max-width: 800px;
     img {
         display: block;
-        margin: 0px auto;
+        margin: 10px auto;
         width: 100px;
     }
     h1 {
@@ -32,5 +32,17 @@ export const StyledSingle = styled.div`
     }
     a {
         color: rgb(255, 255, 255);
+    }
+    @media (max-width: 400px) {
+        padding: 10px;
+        img {
+            width: 70px;
+        }
+        h1 {
+            font-size: 40px;
+        }
+        a{
+            overflow-wrap: break-word;
+        }
     }
 `
