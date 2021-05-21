@@ -1,10 +1,6 @@
 // import axios from 'axios'
 import { useState, useEffect } from 'react'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-} from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Loading from './components/Loading/Loading'
 import Single from './components/Single/Single';
 import Table from './components/Table/Table';
