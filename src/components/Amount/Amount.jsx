@@ -1,18 +1,18 @@
 import { useState } from "react"
 import { StyledForm } from './StyledForm'
 
-
 const Amount = ({ name, price }) => {
-    const [amount, setAmount] = useState(localStorage.getItem(name) || 0)
-    const [inputValue, setInputValue] = useState(Number(localStorage.getItem(name)) || '')
+    const [inputValue, setInputValue] = useState(() => {
+                                            let localStorageObj = JSON.parse(localStorage.getItem(name))
+                                            return Number(localStorageObj?.amount) || ''
+                                        })
 
     const regex = /^[+]?([0-9]+(?:[.][0-9]*)?|\.[0-9]+)(?:[eE][+-]?[0-9]+)?$/
 
     function submitAmount(e) {
         e.preventDefault()
         if (regex.test(inputValue)) {
-            localStorage.setItem(name, inputValue)
-            setAmount(inputValue)
+            localStorage.setItem(name, JSON.stringify({amount: inputValue, price: price}))
         }
     }
 
@@ -24,7 +24,7 @@ const Amount = ({ name, price }) => {
                     <input type='submit' className="input-submit" disabled={inputValue === ''}/>
                 </StyledForm>
             </td>
-            <td>$ {(amount * price).toFixed(2)}</td>
+            <td>$ {(inputValue * price).toFixed(2)}</td>
         </>
     )
 }
