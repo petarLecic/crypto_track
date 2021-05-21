@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Loading from './components/Loading/Loading'
 import Single from './components/Single/Single';
 import Table from './components/Table/Table';
+import { StyledApp } from './StyledApp'
 
 function App() {
     const [currencies, setCurrencies] = useState([])
@@ -26,21 +27,23 @@ function App() {
     //     axios.get('http://localhost:3006').then(res => {
     //         const sortedCurrencies = res.data.sort((a, b) => b.quote.USD.price - a.quote.USD.price)
     //         setCurrencies(sortedCurrencies.slice(0, 50))
-    //         console.log('api refreshed')
     //     })
     // }
     
     return currencies.length > 0 ?
-        <Router>
-            <Switch>
-                <Route exact path="/">
-                    <Table currencies={currencies}/>
-                </Route>
-                <Route path="/currency/:symbol">
-                    <Single/>
-                </Route>
-            </Switch>
-        </Router>
+        <StyledApp>
+            <h1 className="main-heading">Crypto Track</h1>
+            <Router>
+                <Switch>
+                    <Route exact path="/">
+                        <Table currencies={currencies}/>
+                    </Route>
+                    <Route path="/currency/:symbol">
+                        <Single/>
+                    </Route>
+                </Switch>
+            </Router>
+        </StyledApp>
         :
         <Loading/>
 }

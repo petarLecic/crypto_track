@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { StyledForm } from './StyledForm'
 
 
 const Amount = ({ name, price }) => {
@@ -18,10 +19,10 @@ const Amount = ({ name, price }) => {
     return (
         <>
             <td>
-                <form onSubmit={e => submitAmount(e)}>
-                    <input type='number' step="0.001" value={inputValue} onChange={e => setInputValue(e.target.value)}/>
-                    <input type='submit' disabled={inputValue === ''}/>
-                </form>
+                <StyledForm onSubmit={e => submitAmount(e)}>
+                    <input type='number' className="input-number" step="0.001" value={inputValue} onChange={e => setInputValue(e.target.value)}/>
+                    <input type='submit' className="input-submit" disabled={inputValue === ''}/>
+                </StyledForm>
             </td>
             <td>$ {(amount * price).toFixed(2)}</td>
         </>

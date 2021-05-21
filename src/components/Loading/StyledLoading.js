@@ -11,6 +11,7 @@ const scale = keyframes`
         transform: scale(0);
     }
 `
+
 export const StyledLoading = styled.div`
     margin: 100px auto;
     height: 200px;
@@ -23,8 +24,9 @@ export const StyledLoading = styled.div`
     div>div{
         height: 25px;
         width: 25px;
+        border: 1.5px solid rgb(0, 0, 0);
         border-radius: 50%;
-        background: grey;
+        background: rgb(128,128,128);
         position: absolute;
         top: 0%;
         right: 50%;

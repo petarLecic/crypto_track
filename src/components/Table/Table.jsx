@@ -1,10 +1,11 @@
 import TableHeader from '../TableHeader/TableHeader'
 import TableRow from '../TableRow/TableRow'
 import { v4 as uuid4 } from 'uuid'
+import { StyledTable } from './StyledTable'
 
 const Table = ({ currencies }) => {
     return (
-        <table>
+        <StyledTable>
             <thead>
                 <TableHeader/>
             </thead>
@@ -23,7 +24,7 @@ const Table = ({ currencies }) => {
                     })
                 }
             </tbody>
-        </table>
+        </StyledTable>
     )
 }
 

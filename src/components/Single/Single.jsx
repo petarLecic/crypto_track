@@ -2,6 +2,7 @@
 // import { useEffect, useState } from "react"
 // import { useParams } from "react-router"
 import Loading from "../Loading/Loading"
+import { StyledSingle } from './StyledSingle'
 
 const Single = () => {
     // let symbol = useParams()
@@ -34,42 +35,42 @@ const Single = () => {
     }
 
     return currency ?
-        <div>
+        <StyledSingle>
             <img src={currency.logo} alt="logo" />
             <h1>{currency.name}({currency.symbol})</h1>
             <p>{currency.description}</p>
             {currency.category ? 
-                <p><b>Category:</b> {currency.category}</p> : null
+                <p><b>Category:</b>{currency.category}</p> : null
             }
             {currency.date_added ? 
-                <p><b>Date added:</b> {formatDate(currency.date_added)}</p> : null
+                <p><b>Date added:</b>{formatDate(currency.date_added)}</p> : null
             }
             {currency.notice ? 
-                <p><b>Notice:</b> {currency.notice}</p> : null
+                <p><b>Notice:</b>{currency.notice}</p> : null
             }
             {currency.platform ? 
-                <p><b>Platform:</b> {currency.platform.name}</p> : null
+                <p><b>Platform:</b>{currency.platform.name}</p> : null
             }
             {currency.slug ? 
-                <p><b>Slug:</b> {currency.slug}</p> : null
+                <p><b>Slug:</b>{currency.slug}</p> : null
             }
             {currency.subreddit ? 
-                <p><b>Subreddit:</b> {currency.subreddit}</p> : null
+                <p><b>Subreddit:</b>{currency.subreddit}</p> : null
             }
             {currency.tags ? 
-                <p><b>Tags:</b> {currency.tags.join(', ')}</p> : null
+                <p><b>Tags:</b>{currency.tags.join(', ')}</p> : null
             }
             {currency["tag-names"] ? 
-                <p><b>Tag names:</b> {currency["tag-names"].join(', ')}</p> : null
+                <p><b>Tag names:</b>{currency["tag-names"].join(', ')}</p> : null
             }
             {currency.twitter_username ? 
-                <p><b>Twitter username:</b> {currency.twitter_username}</p> : null
+                <p><b>Twitter username:</b>{currency.twitter_username}</p> : null
             }
             {
                 formatUrls(currency.urls).map((el, i) => {
                     return (
                         <div key={i}>
-                            <h1>{el.key}:</h1>
+                            <h1 className="urls-heading">{el.key}:</h1>
                             <ul>
                                 {
                                     el.value.map((el, i) => {
@@ -85,7 +86,7 @@ const Single = () => {
                     )
                 })
             }
-        </div>
+        </StyledSingle>
         :
         <Loading/>
 }
