@@ -19,7 +19,7 @@ const Amount = ({ name, price }) => {
         <>
             <td>
                 <form onSubmit={e => submitAmount(e)}>
-                    <input type='text' value={inputValue} onChange={e => setInputValue(e.target.value)}/>
+                    <input type='number' step="0.001" value={inputValue} onChange={e => setInputValue(e.target.value)}/>
                     <input type='submit' disabled={inputValue === ''}/>
                 </form>
             </td>
